@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <p id='testdata'>PLAAH</p>
+    <script>
+      var HOST = location.origin.replace(/^http/, 'ws')
+      var ws = new WebSocket(HOST);
+      var el = document.getElementById('testdata');
+      ws.onmessage = function (event) {
+        el.innerHTML = el.innerHTML + event.data;
+      };
+    </script>
+  </body>
+</html>

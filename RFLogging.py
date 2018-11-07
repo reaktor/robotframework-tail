@@ -1,5 +1,5 @@
 from websocket import create_connection
-c = create_connection("ws://localhost:3000/")
+c = create_connection("ws://radiant-wildwood-39558.herokuapp.com/")
 
 ROBOT_LISTENER_API_VERSION = 2
 
