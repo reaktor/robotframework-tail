@@ -1,0 +1,11 @@
+{
+  "name": "rflogging",
+  "version": "1.0.0",
+  "description": "Robot Framework Logging",
+  "main": "index.js",
+  "author": "Mikko Korpela <mikko.korpela@gmail.com>",
+  "license": "All rights reserved for Reaktor",
+  "engines": {
+    "node": "10.x"
+  }
+}
