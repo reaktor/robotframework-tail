@@ -1,5 +1,5 @@
 from websocket import create_connection
-c = create_connection("ws://localhost:2222/")
+c = create_connection("ws://localhost:3000/")
 
 ROBOT_LISTENER_API_VERSION = 2
 

@@ -1,25 +1,20 @@
-const WebSocketServer = require("ws").Server;
-const http = require("http");
-const express = require("express");
-const app = express();
-const port = process.env.PORT || 5000;
+'use strict';
 
-app.use(express.static(__dirname + "/"));
+const express = require('express');
+const SocketServer = require('ws').Server;
+const path = require('path');
 
-var server = http.createServer(app);
-server.listen(port);
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
 
-console.log("http server listening on %d", port);
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var wss = new WebSocketServer({server: server, port: 2222});
-console.log("websocket server created");
+const wss = new SocketServer({ server });
 
-wss.on("connection", function(ws) {
-  console.log("websocket connection open")
-  ws.on("close", function() {
-    console.log("websocket connection close")
-  });
-  ws.on("message", function(data) {
-      console.log(data);
-  })
+wss.on('connection', (ws) => {
+  console.log('Client connected');
+  ws.on('close', () => console.log('Client disconnected'));
+  ws.on("message", (data) => console.log(data));
 });
