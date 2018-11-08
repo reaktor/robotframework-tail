@@ -1,12 +1,25 @@
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .testdata {
+        display: flex;
+      }
+    </style>
+  </head>
   <body>
-    <p id='testdata'>PLAAH</p>
+    <div id='testdata'>
+
+    </div>
     <script>
       var HOST = location.origin.replace(/^http/, 'ws')
       var ws = new WebSocket(HOST);
       var el = document.getElementById('testdata');
       ws.onmessage = function (event) {
-        el.innerHTML = el.innerHTML + event.data + "<br/>";
+        var node = document.createElement("div");
+        var text = document.createTextNode(event.data);
+        node.appendChild(text);
+        el.appendChild(node);
       };
     </script>
   </body>
