@@ -10,6 +10,11 @@
       .section {
         background-color: aquamarine;
         font-size: 9px;
+        transition: all 0.4s ease-out;
+        opacity: 0;
+      }
+      .show {
+        opacity: 1;
       }
       div {
         text-align: center;
@@ -30,9 +35,12 @@
         if (data && data.length > 2) {
           if ("START" === data[2] || "END" === data[2]) {
             node.className = "section";
-          }
+          };
           var text = document.createTextNode(data[3]);
           node.appendChild(text);
+          setTimeout(function() {
+            node.className = newLI.className + " show";
+          }, 10);
           el.appendChild(node);
           window.scrollTo(0,document.body.scrollHeight);
         };
