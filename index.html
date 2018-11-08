@@ -5,6 +5,9 @@
       .testdata {
         display: flex;
       }
+      div {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -17,9 +20,12 @@
       var el = document.getElementById('testdata');
       ws.onmessage = function (event) {
         var node = document.createElement("div");
-        var text = document.createTextNode(event.data);
-        node.appendChild(text);
-        el.appendChild(node);
+        var data = JSON.parse(event.data);
+        if (data && data.length > 2) {
+          var text = document.createTextNode(data[2]);
+          node.appendChild(text);
+          el.appendChild(node);
+        }
       };
     </script>
   </body>
