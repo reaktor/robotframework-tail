@@ -36,3 +36,6 @@ def end_keyword(name, attributes):
 
 def log_message(message):
     _send(message["message"])
+
+def close():
+    _send("--- CLOSE ---")
