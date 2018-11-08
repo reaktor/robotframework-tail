@@ -5,6 +5,9 @@
       .testdata {
         display: flex;
       }
+      #section {
+        background-color: aquamarine;
+      }
       div {
         text-align: center;
       }
@@ -22,11 +25,14 @@
         var node = document.createElement("div");
         var data = JSON.parse(event.data);
         if (data && data.length > 2) {
-          var text = document.createTextNode(data[2]);
+          if ("START" === data[2] || "END" === data[2]) {
+            node.className = "section"
+          }
+          var text = document.createTextNode(data[3]);
           node.appendChild(text);
           el.appendChild(node);
           window.scrollTo(0,document.body.scrollHeight);
-        }
+        };
       };
     </script>
   </body>
