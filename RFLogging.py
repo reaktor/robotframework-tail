@@ -20,19 +20,19 @@ def _send(command, data):
     message_index += 1
 
 def end_suite(name, attributes):
-    _send("END", "SUITE '%s' - %s" % (name, attributes["status"]))
+    _send("END", "SUITE '%s' -> %s" % (name, attributes["status"]))
 
 def start_test(name, attributes):
-    _send("START", "TEST '%s' ---" % name)
+    _send("START", "TEST '%s'" % name)
 
 def end_test(name, attributes):
-    _send("END", "TEST '%s' --- %s " % (name, attributes["status"]))
+    _send("END", "TEST '%s' => %s " % (name, attributes["status"]))
 
 def start_keyword(name, attributes):
-    _send("START", "KEYWORD '%s' ---" % name)
+    _send("START", "KEYWORD '%s'" % name)
 
 def end_keyword(name, attributes):
-    _send("END", "KEYWORD '%s' --- %s " % (name, attributes["status"]))
+    _send("END", "KEYWORD '%s' => %s " % (name, attributes["status"]))
 
 def log_message(message):
     _send("MESSAGE", message["message"])

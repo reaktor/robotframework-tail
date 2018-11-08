@@ -39,7 +39,7 @@
           var text = document.createTextNode(data[3]);
           node.appendChild(text);
           setTimeout(function() {
-            node.className = newLI.className + " show";
+            node.className = node.className + " show";
           }, 10);
           el.appendChild(node);
           window.scrollTo(0,document.body.scrollHeight);
