@@ -4,8 +4,9 @@
     <style>
       .testdata {
         display: flex;
+        flex-direction: column;
       }
-      #section {
+      .section {
         background-color: aquamarine;
       }
       div {
@@ -14,7 +15,7 @@
     </style>
   </head>
   <body>
-    <div id='testdata'>
+    <div class='testdata'>
 
     </div>
     <script>
@@ -26,7 +27,7 @@
         var data = JSON.parse(event.data);
         if (data && data.length > 2) {
           if ("START" === data[2] || "END" === data[2]) {
-            node.className = "section"
+            node.className = "section";
           }
           var text = document.createTextNode(data[3]);
           node.appendChild(text);
