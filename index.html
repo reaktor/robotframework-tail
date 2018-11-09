@@ -2,6 +2,9 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+      div {
+        border: 1px solid gray;
+      }
       .testdata {
         display: grid;
         grid-template-columns: 1fr;
@@ -51,6 +54,8 @@
       var el = document.getElementById('testdata');
       var logs = {};
       var columns = 0;
+      var maxrow = 1;
+      var rows = {};
       ws.onmessage = function (event) {
         var node = document.createElement("div");
         var data = JSON.parse(event.data);
@@ -59,6 +64,7 @@
           el.style.gridTemplateRows += " 1fr";
           columns++;
           logs[data[0]] = columns;
+          rows[columns] = 0;
         };
         console.log(logs);
         if (data && data.length > 2) {
@@ -82,6 +88,10 @@
           };
           var text = document.createTextNode(data[4]);
           node.style.gridColumn = logs[data[0]];
+          var row = Math.max(rows[logs[data[0]]] + 1, maxrow);
+          maxrow = Math.max(maxrow, row);
+          rows[logs[data[0]]] = row;
+          node.style.gridRow = row;
           node.appendChild(text);
           setTimeout(function() {
             node.className = node.className + " show";
