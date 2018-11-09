@@ -12,11 +12,28 @@
         flex-grow: 1;
         flex-direction: column;
       }
-      .section {
-        background-color: aquamarine;
+      .sectionstart {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         font-size: 9px;
         transition: all 0.4s ease-out;
         opacity: 0;
+      }
+      .sectionend {
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        font-size: 9px;
+        transition: all 0.4s ease-out;
+        opacity: 0;
+      }
+      .suite {
+        background-color: aquamarine;
+      }
+      .test {
+        background-color: #77c0fb;
+      }
+      .keyword {
+        background-color: #e0dddd;
       }
       .failed {
         background-color: red;
@@ -51,13 +68,25 @@
         };
         console.log(logs);
         if (data && data.length > 2) {
-          if ("START" === data[2] || "END" === data[2]) {
-            node.className = "section";
+          if ("START" === data[2]) {
+            node.className = "sectionstart";
           };
-          if (data[3].indexOf("FAIL") !== -1) {
+          if ("END" === data[2]) {
+            node.className = "sectionend";
+          };
+          if ("KEYWORD" === data[3]) {
+            node.className += " keyword";
+          };
+          if ("SUITE" === data[3]) {
+            node.className += " suite";
+          };
+          if ("TEST" === data[3]) {
+            node.className += " test";
+          };
+          if (data[4].indexOf("FAIL") !== -1) {
             node.className += " failed";
-          }
-          var text = document.createTextNode(data[3]);
+          };
+          var text = document.createTextNode(data[4]);
           node.appendChild(text);
           setTimeout(function() {
             node.className = node.className + " show";

@@ -12,30 +12,30 @@ message_index += 1
 ROBOT_LISTENER_API_VERSION = 2
 
 def start_suite(name, attributes):
-    _send("START", "SUITE '%s'" % name)
+    _send("START", "SUITE", name)
 
-def _send(command, data):
+def _send(command, item, data):
     global message_index
-    c.send(json.dumps([myid, message_index, command, data]))
+    c.send(json.dumps([myid, message_index, command, item, data]))
     message_index += 1
 
 def end_suite(name, attributes):
-    _send("END", "SUITE '%s' -> %s" % (name, attributes["status"]))
+    _send("END", "SUITE", "'%s' -> %s" % (name, attributes["status"]))
 
 def start_test(name, attributes):
-    _send("START", "TEST '%s'" % name)
+    _send("START", "TEST",  name)
 
 def end_test(name, attributes):
-    _send("END", "TEST '%s' => %s " % (name, attributes["status"]))
+    _send("END", "TEST", "'%s' => %s " % (name, attributes["status"]))
 
 def start_keyword(name, attributes):
-    _send("START", "KEYWORD '%s'" % name)
+    _send("START", "KEYWORD", name)
 
 def end_keyword(name, attributes):
-    _send("END", "KEYWORD '%s' => %s " % (name, attributes["status"]))
+    _send("END", "KEYWORD", "'%s' => %s " % (name, attributes["status"]))
 
 def log_message(message):
-    _send("MESSAGE", message["message"])
+    _send("MESSAGE", "MESSAGE", message["message"])
 
 def close():
-    _send("CLOSE", "CLOSE")
+    _send("CLOSE", "CLOSE", "CLOSE")
