@@ -53,6 +53,7 @@
       var ws = new WebSocket("ws://radiant-wildwood-39558.herokuapp.com/");
       var el = document.getElementById('testdata');
       var logs = {};
+      var freeLanes = [];
       var columns = 0;
       var maxrow = 1;
       var rows = {};
@@ -61,10 +62,16 @@
         var data = JSON.parse(event.data);
         console.log(data);
         if (data && data.length === 2) {
-          el.style.gridTemplateRows += " 1fr";
-          columns++;
-          logs[data[0]] = columns;
-          rows[columns] = 0;
+          if (freeLanes.length > 0) {
+            console.log(freeLanes.length);
+            logs[data[0]] = freeLanes.shift();
+          } else {
+            console.log("FREE LANES ZERO");
+            el.style.gridTemplateRows += " 1fr";
+            columns++;
+            logs[data[0]] = columns;
+            rows[columns] = 0;
+          }
         };
         console.log(logs);
         if (data && data.length > 2) {
@@ -73,6 +80,9 @@
           };
           if ("END" === data[2]) {
             node.className = "sectionend";
+          };
+          if ("CLOSE" === data[2]) {
+            freeLanes.push(logs[data[0]]);
           };
           if ("KEYWORD" === data[3]) {
             node.className += " keyword";
