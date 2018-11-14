@@ -57,12 +57,21 @@
   </head>
   <body>
     <div class="main">
-    <iframe class="page" src="login.html">
+    <iframe id="page" class="page" src="login.html">
     </iframe>
     <div id='testdata' class='testdata'>
+      <button id="Refresh" onclick="refresh()">Refresh</button>
     </div>
     </div>
     <script>
+      function refresh() {
+        var elem = document.getElementById('page');
+        elem.src = "";
+        elem.contentWindow.location.reload();
+        setTimeout(function() {
+            elem.src = "login.html";
+          }, 10);
+      };
       var HOST = location.origin.replace(/^http/, 'ws');
       var ws = new WebSocket("ws://radiant-wildwood-39558.herokuapp.com/");
       var el = document.getElementById('testdata');

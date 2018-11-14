@@ -9,7 +9,7 @@ Library           SeleniumLibrary
 *** Variables ***
 ${SERVER}         localhost:3000
 ${BROWSER}        Chrome
-${DELAY}          0.4
+${DELAY}          1
 ${VALID USER}     demo
 ${VALID PASSWORD}    mode
 ${LOGIN URL}      http://${SERVER}/
@@ -28,7 +28,8 @@ Login Page Should Be Open
     Log   ignore this
 
 Go To Login Page
-    Go To    ${LOGIN URL}
+    Unselect Frame
+    Click Button  Refresh
     Select Frame    //iframe[@class='page']
     Login Page Should Be Open
 
