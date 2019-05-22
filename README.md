@@ -6,6 +6,10 @@ RFLogging.py is the actual listener. It requires websocket-client ( https://gith
 
 Log is shown by a web server. Web server uses node and yarn. So install node and yarn.
 
+Node from https://nodejs.org/en/
+
+Yarn from https://yarnpkg.com/en/docs/install
+
 To get everything running:
 
 `yarn start` on the project directory.
