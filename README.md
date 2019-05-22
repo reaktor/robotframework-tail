@@ -12,7 +12,9 @@ Yarn from https://yarnpkg.com/en/docs/install
 
 To get everything running:
 
-`yarn start` on the project directory.
+First time run `yarn install`.
+
+To get the server running `yarn start` on the project directory.
 
 Open browser to http://localhost:3000 (this is the page where the log will be shown).
 
