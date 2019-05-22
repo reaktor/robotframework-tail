@@ -2,7 +2,7 @@ from websocket import create_connection
 import uuid
 import json
 
-c = create_connection("ws://radiant-wildwood-39558.herokuapp.com/")
+c = create_connection("ws://localhost:3000/")
 myid = str(uuid.uuid4())
 message_index = 0
 

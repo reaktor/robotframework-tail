@@ -50,7 +50,7 @@
     </div>
     <script>
       var HOST = location.origin.replace(/^http/, 'ws');
-      var ws = new WebSocket("ws://radiant-wildwood-39558.herokuapp.com/");
+      var ws = new WebSocket(HOST);
       var el = document.getElementById('testdata');
       var logs = {};
       var freeLanes = [];
