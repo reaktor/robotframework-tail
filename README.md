@@ -1,5 +1,7 @@
 # rflogging
 
+![Log example image](https://raw.githubusercontent.com/reaktor/rflogging/master/examplelog.png)
+
 How to get this started:
 
 RFLogging.py is the actual listener. It requires websocket-client ( https://github.com/websocket-client/websocket-client ). `pip install websocket-client`.
