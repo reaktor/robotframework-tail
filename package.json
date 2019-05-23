@@ -6,7 +6,7 @@
   "author": "Mikko Korpela <mikko.korpela@gmail.com>",
   "license": "UNLICENSED",
   "engines": {
-    "node": "10.x"
+    "node": "12.x"
   },
   "dependencies": {
     "express": "^4.16.4",
