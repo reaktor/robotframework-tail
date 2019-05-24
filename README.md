@@ -22,4 +22,4 @@ To get the server running `yarn start` on the project directory.
 
 Open browser to http://localhost:3000 (this is the page where the log will be shown).
 
-Run robot / pabot tests with option `--listener RFLogging.py` and a log will be shown on runtime with swimlanes for parallel tests.
+Run robot / pabot tests with option `--listener TailListener.py` and a log will be shown on runtime with swimlanes for parallel tests.
